@@ -1,10 +1,16 @@
-import React from 'react'
-import NavBar from './components/NavBar.jsx'
+import React from "react";
+import SocialFloatingMenu from "./components/SocialFloatingMenu.jsx";
+import NavBar from "./sections/NavBar.jsx";
+import NavBarrrrr from "./sections/NavBarrrrr.jsx"; // This is the old version of NavBar
 
 const App = () => {
   return (
-    <NavBar />
-  )
-}
+    <>
+      <SocialFloatingMenu />
+      {/* <NavBar /> */}
+      <NavBarrrrr />
+    </>
+  );
+};
 
-export default App
+export default App;
