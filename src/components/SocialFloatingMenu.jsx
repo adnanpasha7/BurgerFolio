@@ -35,7 +35,7 @@ const SocialFloatingMenu = () => {
     {
       icon: faXTwitter,
       href: "https://x.com/adnanpasha_",
-      label: "Twitter",
+      label: "X (Twitter)",
     },
   ];
 
@@ -43,7 +43,7 @@ const SocialFloatingMenu = () => {
     <div className="fixed top-4 right-4 z-50">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-[#A9070C] text-[#FAEFD2] rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition"
+        className="w-14 h-14 bg-[#A9070C] text-[#FAEFD2] rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition sparkle-btn"
         aria-label="Toggle Contact Menu"
       >
         <FontAwesomeIcon icon={faCommentDots} className="text-2xl" />
@@ -56,26 +56,31 @@ const SocialFloatingMenu = () => {
             : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
-        {links.map((link, index) => (
-          <a
-            key={index}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative w-14 h-14 bg-cover bg-center flex items-center justify-center hover:scale-110 transition"
-            style={{ backgroundImage: `url(${burgerImg})` }}
-            aria-label={link.label}
-          >
-            <FontAwesomeIcon
-              icon={link.icon}
-              className="text-[#FAEFD2] text-xl drop-shadow-sm"
-            />
+        {links.map((link, index) => {
+          const isPhone = link.icon === faPhone;
+          return (
+            <a
+              key={index}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group relative w-14 h-14 bg-cover bg-center flex items-center justify-center hover:scale-110 transition ${
+                isPhone && "md:hidden"
+              }`}
+              style={{ backgroundImage: `url(${burgerImg})` }}
+              aria-label={link.label}
+            >
+              <FontAwesomeIcon
+                icon={link.icon}
+                className="text-[#FAEFD2] text-xl drop-shadow-sm"
+              />
 
-            <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-[#A9070C] text-[#FAEFD2] text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
-              {link.label}
-            </span>
-          </a>
-        ))}
+              <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-[#A9070C] text-[#FAEFD2] text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap">
+                {link.label}
+              </span>
+            </a>
+          );
+        })}
       </div>
     </div>
   );

@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Chewy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Caveat+Brush&family=Chewy&display=swap");
 
 @layer base {
   body {
-    @apply bg-[#FAEFD2] font-chewy overflow-x-clip;
+    @apply bg-[#FAEFD2] font-bangers overflow-x-clip;
   }
 }
 
@@ -48,5 +48,25 @@
 
   .wavy-underline-hover:hover::after {
     opacity: 1;
+  }
+  /* Scrollbar for WebKit browsers */
+  ::-webkit-scrollbar {
+    width: 8px; /* width of vertical scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* light grey background */
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #a9070c; /* your primary red */
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+  }
+
+  /* Optional hover effect */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #880607;
   }
 }

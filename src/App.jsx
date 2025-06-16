@@ -14,8 +14,8 @@ const App = () => {
       {/* <NavBar /> */}
       <NavBarrrrr />
       <Hero />
-      <Hero /> 
-      <Hero />
+      {/* <Hero />
+      <Hero /> */}
     </>
   );
 };

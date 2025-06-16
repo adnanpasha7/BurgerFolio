@@ -14,7 +14,10 @@ const Pointer = ({ name, color }) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="feather feather-mouse-pointer text-[#E86B03]"
+        className={twMerge(
+          "feather feather-mouse-pointer text-[#E86B03]",
+          color === "red" && "text-[#A9070C]"
+        )}
       >
         <path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path>
         <path d="M13 13l6 6"></path>
@@ -23,7 +26,7 @@ const Pointer = ({ name, color }) => {
         <div
           className={twMerge(
             "inline-flex rounded-full font-bold bg-[#A9070C] px-2 rounded-tl-none",
-            color === "brown" && "bg-[#E86B03]"
+            color === "brown" ? "bg-[#E86B03]" : "text-[#FAEFD2]"
           )}
         >
           {name}

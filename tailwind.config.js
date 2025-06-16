@@ -13,8 +13,10 @@ export default {
     extend: {
       fontFamily: {
         fredoka: ['"Fredoka One"', "cursive"],
-        chewy: ["Chewy", "cursive"],
+        // chewy: ["Chewy", "cursive"],
+        bangers: ["Bangers", "cursive"],
         inter: ["Inter", "sans-serif"],
+        caveat: ["Caveat", "cursive"],
       },
       screens: {
         sm: "375px",

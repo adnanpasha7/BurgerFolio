@@ -27,11 +27,11 @@ const NavBarrrrr = () => {
         <div>
           <div className="flex items-center justify-center gap-8">
             <div className="flex items-center gap-2">
-              <img
+              {/* <img
                 src={LogoImg}
                 alt="Logo"
                 className="size-24 sm:size-16 rounded-full"
-              />
+              /> */}
               <div className="flex flex-col">
                 <p className="text-sm md:text-[25px] sm:text-[20px] font-bold text-[#A9070C] sm:w-auto">
                   Adnan's Dev Diner
