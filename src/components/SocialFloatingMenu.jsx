@@ -1,43 +1,15 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faInstagram,
-  faLinkedin,
-  faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import {
   faPhone,
   faEnvelope,
   faCommentDots,
 } from "@fortawesome/free-solid-svg-icons";
 import burgerImg from "../assets/Burger.png";
+import { SocialLinks } from "../constants";
 
 const SocialFloatingMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const links = [
-    { icon: faPhone, href: "tel:+919108811142", label: "Call" },
-    {
-      icon: faEnvelope,
-      href: "mailto:adnanbasha786@gmail.com",
-      label: "Email",
-    },
-    {
-      icon: faInstagram,
-      href: "https://instagram.com/humblekidpasha",
-      label: "Instagram",
-    },
-    {
-      icon: faLinkedin,
-      href: "https://www.linkedin.com/in/adnanpasha7/",
-      label: "LinkedIn",
-    },
-    {
-      icon: faXTwitter,
-      href: "https://x.com/adnanpasha_",
-      label: "X (Twitter)",
-    },
-  ];
 
   return (
     <div className="fixed top-4 right-4 z-50">
@@ -56,7 +28,7 @@ const SocialFloatingMenu = () => {
             : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
-        {links.map((link, index) => {
+        {SocialLinks.map((link, index) => {
           const isPhone = link.icon === faPhone;
           return (
             <a

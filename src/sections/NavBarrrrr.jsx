@@ -7,7 +7,7 @@ import { twMerge } from "tailwind-merge";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [
-  { name: "Home", logo: "🏠", href: "/" },
+  // { name: "Home", logo: "🏠", href: "/" },
   { name: "Menu", logo: "🍔", href: "/menu" },
   { name: "About", logo: "👨‍🍳", href: "/about" },
   { name: "Blog", logo: "📖", href: "/blog" },
@@ -16,12 +16,13 @@ const navLinks = [
 
 const NavBarrrrr = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <section className="top-0 w-full">
       <img
         src={BurgerTop}
         alt="Burger Top"
-        className="w-5/6 sm:w-2/3 h-64 sm:h-40 block m-auto -mt-8 sm:-mt-4"
+        className="w-1/2 h-48 block m-auto -mt-8 sm:-mt-4"
       />
       <div className="flex items-center justify-center">
         <div>
@@ -39,7 +40,7 @@ const NavBarrrrr = () => {
                 <p className="mt-1">Full Stack Burgers, served hot</p>
               </div>
             </div>
-            <nav className="hidden md:flex">
+            <nav>
               {navLinks.map((link, index) => (
                 <Link
                   key={index}
@@ -122,7 +123,7 @@ const NavBarrrrr = () => {
       <img
         src={BurgerBottom}
         alt="Burger Bottom"
-        className="w-5/6 sm:w-2/3 h-64 sm:h-40 block m-auto -mt-8 sm:-mt-4"
+        className="w-1/2 h-48 block m-auto -mt-8 sm:-mt-4"
       />
     </section>
   );

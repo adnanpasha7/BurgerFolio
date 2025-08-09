@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Pointer from "../components/Pointer.jsx";
 import sittingOnBurger from "../assets/sittingOnBurger.webp";
-import { motion, useAnimate } from "framer-motion";
+import { motion, useAnimate, useAnimation } from "framer-motion";
 
 const Hero = () => {
   const [leftImageScope, leftImageAnimate] = useAnimate();
@@ -46,15 +46,40 @@ const Hero = () => {
     // ]);
   }, []);
 
+  const controls = useAnimation();
+  const [draggedAway, setDraggedAway] = useState(false);
+  const resetPosition = () => {
+    controls.start({
+      x: 0,
+      y: 0,
+      transition: { type: "spring", stiffness: 50, damping: 25, mass: 1.5 }
+    });
+    setDraggedAway(false);
+  };
+
+  // When drag ends, check position to decide if image moved away or not
+  const onDragEnd = (_, info) => {
+    // Check if image is near origin (tolerance 10px)
+    if (Math.abs(info.point.x) < 10 && Math.abs(info.point.y) < 10) {
+      setDraggedAway(false);
+      controls.start({ x: 0, y: 0 });
+    } else {
+      setDraggedAway(true);
+    }
+  };
   return (
-    <section className="py-8 md:py-16">
+    <section id="hero" className="py-8 md:py-16">
       <div className="container text-center">
         <motion.div
           ref={leftImageScope}
           initial={{ opacity: 0, y: 100, x: -100 }}
+          animate={controls}
           drag
-          onDragStart={() => setDragging(false)}
-          className="absolute sm:left-1 md:-left-2 lg:-left-4 sm:top-48 md:-top-0 lg:-top-0 z-50 block w-20 sm:w-28 md:w-64 lg:w-80"
+          onDragStart={() => {
+            setDragging(false)
+            setDraggedAway(true)
+          }}
+          className="hidden md:block absolute md:-left-2 lg:-left-4 md:-top-0 lg:-top-0 z-50 w-20 md:w-64 lg:w-80"
         >
           {dragging && (
             <motion.p
@@ -70,9 +95,17 @@ const Hero = () => {
             alt="Sitting on Burger"
             draggable="false"
             onDragStart={(e) => e.preventDefault()}
-            className="top-0"
+            className="top-0 z-0"
           />
         </motion.div>
+        {draggedAway && (
+          <button
+            onClick={resetPosition}
+            className="sparkle-btn absolute top-80 sm:left-10 left-20 w-20 px-4 py-2 bg-[#A9070C] text-white rounded opacity-90 z-0"
+          >
+            Get me back
+          </button>
+        )}
         {/* <motion.div
           ref={leftPointerScope}
           initial={{ opacity: 0, y: 100, x: -200 }}
@@ -99,7 +132,7 @@ const Hero = () => {
           <span className="inline-block animate-wave origin-[70%_70%]">
             👋
           </span>{" "}
-          I am <span className="font-bold text-[#A9070C]">Adnan</span>
+          I'm <span className="font-bold text-[#A9070C]">Adnan</span>
         </h1>
         <p className="mt-4 text-4xl md:text-4xl text-[#333]">
           serving full-stack solutions with a side of AI.

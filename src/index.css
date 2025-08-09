@@ -1,12 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Caveat+Brush&family=Chewy&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Caveat+Brush&family=Chewy&display=swap");
 
 @layer base {
   body {
-    @apply bg-[#FAEFD2] font-bangers overflow-x-clip;
+    @apply bg-[#FFECA9] font-chewy overflow-x-clip h-[10000px];
   }
 }
 
@@ -51,18 +52,18 @@
   }
   /* Scrollbar for WebKit browsers */
   ::-webkit-scrollbar {
-    width: 8px; /* width of vertical scrollbar */
+    width: 12px; /* width of vertical scrollbar */
   }
 
   ::-webkit-scrollbar-track {
-    background: #f1f1f1; /* light grey background */
+    background: #FFECA9;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #a9070c; /* your primary red */
+    background-color: #a9070c;
     border-radius: 10px;
-    border: 2px solid #f1f1f1;
+    border: 2px solid #FAEFD2;
   }
 
   /* Optional hover effect */
