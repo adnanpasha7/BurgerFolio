@@ -9,7 +9,7 @@ import {
   faCommentDots,
 } from "@fortawesome/free-solid-svg-icons";
 
-export const SocialLinks = [
+export const socialLinks = [
     { icon: faPhone, href: "tel:+919108811142", label: "Call" },
     {
       icon: faEnvelope,

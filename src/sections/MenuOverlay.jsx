@@ -1,18 +1,21 @@
 import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
-import { href, Link } from "react-router-dom";
+import pop2 from "../assets/pop2.mp3";
+
 
 const menuLinksData = [
-  {name: "Home", href: "#hero"},
+  {name: "Home", href: "#"},
   { name: "Menu", href: "#hero" },
-  { name: "About", href: "#hero" },
-  { name: "Blog", href: "#hero" },
-  { name: "Contact", href: "#hero" },
+  { name: "About", href: "#about" },
+  { name: "Blog", href: "#blog" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const MenuOverlay = ({ isOpen, onClose }) => {
   const menuOverlayRef = useRef(null);
   const menuContentRef = useRef(null);
+  const popAudioRef = useRef(null);
+
   const linkRefs = useRef([]);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -64,44 +67,49 @@ const MenuOverlay = ({ isOpen, onClose }) => {
   }, [isOpen, isAnimating, onClose]);
 
   useEffect(() => {
-    const scrollbarWidth =
-      window.innerWidth - document.documentElement.clientWidth;
-
+  
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollbarWidth}px`; // reserve scrollbar space
     } else {
       document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
     }
 
     return () => {
       document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
     };
   }, [isOpen]);
+
+  const handlePopHover = (start) => {
+    if (popAudioRef.current) {
+      popAudioRef.current.currentTime = 0;
+      start ? popAudioRef.current.play() : popAudioRef.current.pause();
+    }
+  };
 
   return (
     <div
       ref={menuOverlayRef}
-      className="fixed top-0 left-0 w-full h-screen bg-[#FDAC1A] z-[999]"
+      className="fixed top-0 left-0 w-full h-screen bg-[#A9070C] z-[999] flex justify-center items-center"
       style={{ clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)" }}
       aria-hidden={!isOpen}
     >
+        <audio ref={popAudioRef} src={pop2} preload="auto" />
       <div
         ref={menuContentRef}
-        className="relative w-full h-full flex flex-col justify-center items-center gap-10 text-[#FAEFD2] text-3xl transform translate-y-[120%] opacity-0"
+        className="relative sm:w-2/3 md:w-1/3 h-9/10 p-10 rounded-lg flex flex-col bg-[#FFECA9] justify-center items-center gap-10 text-[#A9070C] text-3xl transform translate-y-[120%] opacity-0"
       >
         {menuLinksData.map((link, idx) => (
-          <Link
+          <a
             key={link.name}
-            to={link.href}
+            href={link.href}
             ref={(el) => (linkRefs.current[idx] = el)}
             className="hover:text-[#A9070C] transition-colors duration-300 cursor-pointer wavy-underline-hover"
             onClick={onClose}
+            onMouseEnter={() => handlePopHover(true)}
+            onMouseLeave={() => handlePopHover(false)}
           >
             {link.name}
-          </Link>
+          </a>
         ))}
       </div>
     </div>

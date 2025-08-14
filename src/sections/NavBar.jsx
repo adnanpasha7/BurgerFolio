@@ -1,86 +1,44 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+
 import BurgerTop from "../assets/BT.webp";
 import BurgerBottom from "../assets/BB.webp";
-import { Link } from "react-router-dom";
-import { twMerge } from "tailwind-merge";
-import { motion } from "framer-motion";
-import MenuOverlay from "./MenuOverlay";
 import grill from "../assets/grill-sound.mp3";
+import pop2 from "../assets/pop2.mp3";
+import openClose from "../assets/openClose.mp3";
+
+import MenuOverlay from "../sections/MenuOverlay.jsx";
+import BurgerIcon from "../components/BurgerIcon.jsx";
+import {
+  swayVariant,
+  bottomBunVariant,
+  stampVariant,
+} from "../utils/animations.js";
 
 const navLinks = [
   { name: "Menu", href: "/menu" },
   { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "resume" },
+  { name: "Contact", href: "#contact" },
 ];
 
-const NavBar = () => {
+export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [showCompactNav, setShowCompactNav] = useState(false);
-  const [bounceDone, setBounceDone] = useState(false); // New state to track bounce completion
+
+  const audioRef = useRef(null);
+  const popAudioRef = useRef(null);
+  const openAudioRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowCompactNav(window.scrollY > 372);
-    };
+    const handleScroll = () => setShowCompactNav(window.scrollY > 372);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Bun sway animation
-  const swayVariant = {
-    initial: { opacity: 0, y: -50, scale: 0.9 },
-    animate: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotate: [0, 2, -2, 2, 0],
-      transition: {
-        rotate: { repeat: Infinity, duration: 2, ease: "easeInOut" },
-        type: "spring",
-        stiffness: 120,
-        damping: 8,
-      },
-    },
-    hidden: { opacity: 0, scale: 0.9 },
-    stopped: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotate: 0,
-      transition: {
-        duration: 1, // longer duration for smooth ease-out
-        ease: "easeOut",
-      },
-    },
-  };
-
-  const bottomBunVariant = {
-    ...swayVariant,
-    initial: { opacity: 0, y: 50, scale: 0.9 },
-  };
-
-  // Stamp effect animation for title
-  const stampVariant = {
-    hidden: { opacity: 0, scale: 4, y: 0 }, // big zoom start
-    visible: {
-      opacity: [1, 1, 1, 1, 1, 1], // keep opacity fully visible throughout
-      scale: [4, 0.9, 1.05, 1, 1.05, 1], // zoom out then bounce twice then settle
-      y: [0, -10, 0, -5, 0, 0], // bounce up/down effect
-      transition: {
-        duration: 2.5,
-        ease: "easeInOut",
-        times: [0, 0.2, 0.5, 0.7, 0.9, 1],
-      },
-    },
-    exit: { opacity: 0, scale: 0.5, y: -20, transition: { duration: 0.4 } },
-  };
-
-   const audioRef = useRef(null);
-
   const handleHoverStart = () => {
     if (audioRef.current) {
-      audioRef.current.currentTime = 0; // rewind to start
+      audioRef.current.currentTime = 0;
       audioRef.current.play();
     }
   };
@@ -88,171 +46,114 @@ const NavBar = () => {
   const handleHoverEnd = () => {
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current.currentTime = 0; // reset
+      audioRef.current.currentTime = 0;
+    }
+  };
+
+  const handlePopHover = (start) => {
+    if (popAudioRef.current) {
+      popAudioRef.current.currentTime = 0;
+      start ? popAudioRef.current.play() : popAudioRef.current.pause();
+    }
+  };
+
+  const handleOpenCloseAudio = (start) => {
+    if (openAudioRef.current) {
+      openAudioRef.current.currentTime = 0;
+      start ? openAudioRef.current.play() : openAudioRef.current.pause();
     }
   };
 
   return (
     <section className="top-0 w-full relative overflow-hidden">
-      {/* Burger Top */}
-      <audio ref={audioRef} src={grill} preload="auto"></audio>
+      <audio ref={audioRef} src={grill} preload="auto" />
+      <audio ref={popAudioRef} src={pop2} preload="auto" />
+      <audio ref={openAudioRef} src={openClose} preload="auto" />
+
+      {/* Top Bun */}
       <motion.img
         src={BurgerTop}
         alt="Burger Top"
         className="sm:w-5/6 md:w-1/2 h-48 block m-auto -mt-8 sm:-mt-4"
         variants={swayVariant}
         initial="initial"
-        animate={
-          showCompactNav
-            ? "hidden"
-            : bounceDone
-            ? "stopped" // stop jiggle after bounce finishes
-            : "animate"
-        }
-        transition={{ duration: 0.6 }}
+        animate={showCompactNav ? "hidden" : "animate"}
         onHoverStart={handleHoverStart}
         onHoverEnd={handleHoverEnd}
       />
 
-      {/* Title with stamp animation */}
+      {/* Title + Nav Links */}
       <motion.div
         className="flex flex-row items-center justify-center gap-4"
         variants={stampVariant}
         initial="hidden"
         animate={showCompactNav ? "exit" : "visible"}
-        onAnimationComplete={() => setBounceDone(true)} // set bounce done on animation finish
       >
         <div className="flex flex-col items-center">
-          <p className="text-sm md:text-[25px] sm:text-[20px] font-bold text-[#A9070C] sm:w-auto">
+          <p className="text-sm md:text-[25px] sm:text-[20px] font-bold text-[#A9070C]">
             Adnan&apos;s Dev Diner
           </p>
           <p className="mt-1">Full Stack Burgers, served hot</p>
         </div>
 
         <nav className="hidden md:flex gap-4">
-          {navLinks.map((link, index) => (
-            <Link
-              key={index}
-              to={link.href}
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
               className="text-[#A9070C] font-medium px-3 py-2 wavy-underline-hover hover:scale-125"
+              onMouseEnter={() => handlePopHover(true)}
+              onMouseLeave={() => handlePopHover(false)}
             >
               {link.name}
-            </Link>
+            </a>
           ))}
         </nav>
+
+        {/* Mobile Burger */}
         <div className="flex md:hidden items-center justify-end gap-4">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="feather feather-menu text-[#A9070C]"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <line
-              x1="3"
-              y1="6"
-              x2="21"
-              y2="6"
-              className={twMerge(
-                "origin-left transition",
-                isOpen && "rotate-45 -translate-y-1"
-              )}
-            ></line>
-            <line
-              x1="3"
-              y1="12"
-              x2="21"
-              y2="12"
-              className={twMerge("transition", isOpen && "opacity-0")}
-            ></line>
-            <line
-              x1="3"
-              y1="18"
-              x2="21"
-              y2="18"
-              className={twMerge(
-                "origin-left transition",
-                isOpen && "-rotate-45 translate-y-1"
-              )}
-            ></line>
-          </svg>
+          <div className="w-6 h-6 relative">
+            <BurgerIcon
+              isOpen={isOpen}
+              onClick={() => {
+                setIsOpen(!isOpen);
+                handleOpenCloseAudio(true);
+              }}
+              small
+            />
+          </div>
         </div>
       </motion.div>
 
-      {/* Burger Bottom */}
+      {/* Bottom Bun */}
       <motion.img
         src={BurgerBottom}
         alt="Burger Bottom"
         className="sm:w-5/6 md:w-1/2 h-48 block m-auto -mt-8 sm:-mt-4"
         variants={bottomBunVariant}
         initial="initial"
-        animate={showCompactNav ? "hidden" : bounceDone ? "stopped" : "animate"}
+        animate={showCompactNav ? "hidden" : "animate"}
         transition={{ duration: 0.6, delay: 0.3 }}
       />
 
-      {/* Menu Icon */}
+      {/* Compact Nav Burger */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={showCompactNav ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
         transition={{ duration: 0.4 }}
         className="fixed top-4 right-4 z-[9999]"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="36"
-          height="36"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="feather feather-menu text-[#A9070C] cursor-pointer"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          <line
-            x1="3"
-            y1="6"
-            x2="21"
-            y2="6"
-            className={twMerge(
-              "origin-left transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
-              isOpen && "rotate-45 -translate-y-1"
-            )}
-          ></line>
-          <line
-            x1="3"
-            y1="12"
-            x2="21"
-            y2="12"
-            className={twMerge(
-              "transition-all",
-              isOpen
-                ? "opacity-0"
-                : "duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
-            )}
-          ></line>
-          <line
-            x1="3"
-            y1="18"
-            x2="21"
-            y2="18"
-            className={twMerge(
-              "origin-left transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
-              isOpen && "-rotate-45 translate-y-1"
-            )}
-          ></line>
-        </svg>
+        <BurgerIcon
+          isOpen={isOpen}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            handleOpenCloseAudio(true);
+          }}
+          size={36}
+        />
       </motion.div>
+
       <MenuOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </section>
   );
-};
-
-export default NavBar;
+}

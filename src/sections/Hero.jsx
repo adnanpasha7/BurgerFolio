@@ -68,7 +68,7 @@ const Hero = () => {
     }
   };
   return (
-    <section id="hero" className="py-8 md:py-16">
+    <section id="hero" className="py-8 md:py-16 mb-[1000px]">
       <div className="container text-center">
         <motion.div
           ref={leftImageScope}
@@ -101,7 +101,7 @@ const Hero = () => {
         {draggedAway && (
           <button
             onClick={resetPosition}
-            className="sparkle-btn absolute top-80 sm:left-10 left-20 w-20 px-4 py-2 bg-[#A9070C] text-white rounded opacity-90 z-0"
+            className="sparkle-btn absolute top-80 left-20 w-20 px-4 py-2 bg-[#A9070C] text-[#FFECA9] rounded-full opacity-90 z-0 hover:scale-110"
           >
             Get me back
           </button>

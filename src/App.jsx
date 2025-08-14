@@ -8,6 +8,8 @@ import Hero2 from "./sections/Hero2.jsx";
 import BackToTopButton from "./components/BackToTopButton.jsx";
 import AdnansDinerMenu from "./sections/Abc.jsx";
 import SmallScreenModal from "./components/SmallScreenModal.jsx";
+import ContactPage from "./sections/Contact.jsx";
+import Footer from "./sections/Footer.jsx";
 
 const App = () => {
   window.addEventListener("scroll", () => {
@@ -17,13 +19,15 @@ const App = () => {
     <>
       {/* <SocialFloatingMenu /> */}
       {/* <AdnansDinerMenu /> */}
-      <SmallScreenModal />
+      {/* <SmallScreenModal /> */}
       <BackToTopButton />
       <NavBar />
       {/* <NavBarrrrr /> */}
       {/* <NavBar2 /> */}
       {/* <Hero2 /> */}
       <Hero />
+      <ContactPage />
+      <Footer />
     </>
   );
 };

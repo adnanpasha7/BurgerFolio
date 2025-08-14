@@ -6,7 +6,7 @@ import {
   faCommentDots,
 } from "@fortawesome/free-solid-svg-icons";
 import burgerImg from "../assets/Burger.png";
-import { SocialLinks } from "../constants";
+import { socialLinks } from "../constants";
 
 const SocialFloatingMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +28,7 @@ const SocialFloatingMenu = () => {
             : "opacity-0 translate-y-4 pointer-events-none"
         }`}
       >
-        {SocialLinks.map((link, index) => {
+        {socialLinks.map((link, index) => {
           const isPhone = link.icon === faPhone;
           return (
             <a

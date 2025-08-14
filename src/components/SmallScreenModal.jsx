@@ -29,7 +29,7 @@ const SmallScreenModal = () => {
     <div className="fixed inset-0 bg-black bg-blur flex justify-center items-center z-50">
       <div className="bg-white rounded-lg p-6 max-w-sm mx-4 text-center shadow-lg">
         <h2 className="text-xl font-semibold mb-4 text-gray-800">
-          Enjoyed best on larger devices
+          Viewed best on larger devices
         </h2>
         <p className="mb-6 text-gray-600">
           For the best experience, please view this site on a larger screen.
