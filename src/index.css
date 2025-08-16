@@ -7,7 +7,7 @@
 
 @layer base {
   body {
-    @apply bg-[#FFECA9] font-chewy overflow-x-clip;
+    @apply bg-primary font-chewy overflow-x-clip;
   }
   html {
   scroll-behavior: smooth;
@@ -16,7 +16,7 @@
 
 @layer components {
   .sparkle-btn {
-    @apply relative border h-12 rounded-full px-6 font-medium flex items-center justify-center;
+    @apply relative h-12 rounded-full px-6 font-medium flex items-center justify-center;
     color: #111;
     background-color: #fff;
     z-index: 0;

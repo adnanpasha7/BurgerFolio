@@ -7,6 +7,9 @@ import grill from "../assets/grill-sound.mp3";
 import pop2 from "../assets/pop2.mp3";
 import openClose from "../assets/openClose.mp3";
 
+import useActiveBackground from "../utils/activeBg.js";
+import { navLinks } from "../constants";
+
 import MenuOverlay from "../sections/MenuOverlay.jsx";
 import BurgerIcon from "../components/BurgerIcon.jsx";
 import {
@@ -15,20 +18,14 @@ import {
   stampVariant,
 } from "../utils/animations.js";
 
-const navLinks = [
-  { name: "Menu", href: "/menu" },
-  { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "#contact" },
-];
-
-export default function NavBar() {
+const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showCompactNav, setShowCompactNav] = useState(false);
 
-  const audioRef = useRef(null);
+  const grillAudioRef = useRef(null);
   const popAudioRef = useRef(null);
   const openAudioRef = useRef(null);
+  const activeBg = useActiveBackground();
 
   useEffect(() => {
     const handleScroll = () => setShowCompactNav(window.scrollY > 372);
@@ -36,17 +33,10 @@ export default function NavBar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleHoverStart = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
-    }
-  };
-
-  const handleHoverEnd = () => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
+  const handleGrillHover = (start) => {
+    if (grillAudioRef.current) {
+      grillAudioRef.current.currentTime = 0;
+      start ? grillAudioRef.current.play() : grillAudioRef.current.pause();
     }
   };
 
@@ -66,7 +56,7 @@ export default function NavBar() {
 
   return (
     <section className="top-0 w-full relative overflow-hidden">
-      <audio ref={audioRef} src={grill} preload="auto" />
+      <audio ref={grillAudioRef} src={grill} preload="auto" />
       <audio ref={popAudioRef} src={pop2} preload="auto" />
       <audio ref={openAudioRef} src={openClose} preload="auto" />
 
@@ -78,8 +68,8 @@ export default function NavBar() {
         variants={swayVariant}
         initial="initial"
         animate={showCompactNav ? "hidden" : "animate"}
-        onHoverStart={handleHoverStart}
-        onHoverEnd={handleHoverEnd}
+        onHoverStart={() => handleGrillHover(true)}
+        onHoverEnd={() => handleGrillHover(false)}
       />
 
       {/* Title + Nav Links */}
@@ -90,8 +80,8 @@ export default function NavBar() {
         animate={showCompactNav ? "exit" : "visible"}
       >
         <div className="flex flex-col items-center">
-          <p className="text-sm md:text-[25px] sm:text-[20px] font-bold text-[#A9070C]">
-            Adnan&apos;s Dev Diner
+          <p className="text-sm md:text-[25px] sm:text-[20px] font-bold text-secondary">
+            Adnan&apos;s Code Diner
           </p>
           <p className="mt-1">Full Stack Burgers, served hot</p>
         </div>
@@ -101,7 +91,7 @@ export default function NavBar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-[#A9070C] font-medium px-3 py-2 wavy-underline-hover hover:scale-125"
+              className="text-secondary font-medium px-3 py-2 wavy-underline-hover hover:scale-125"
               onMouseEnter={() => handlePopHover(true)}
               onMouseLeave={() => handlePopHover(false)}
             >
@@ -150,6 +140,7 @@ export default function NavBar() {
             handleOpenCloseAudio(true);
           }}
           size={36}
+          bgColor={activeBg}
         />
       </motion.div>
 
@@ -157,3 +148,5 @@ export default function NavBar() {
     </section>
   );
 }
+
+export default NavBar;

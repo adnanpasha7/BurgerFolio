@@ -6,8 +6,6 @@ import { motion, useAnimate, useAnimation } from "framer-motion";
 const Hero = () => {
   const [leftImageScope, leftImageAnimate] = useAnimate();
   const [leftTextScope, leftTextAnimate] = useAnimate();
-  const [rightImageScope, rightImageAnimate] = useAnimate();
-  const [rightPointerScope, rightPointerAnimate] = useAnimate();
   const [dragging, setDragging] = useState(true);
 
   useEffect(() => {
@@ -18,32 +16,6 @@ const Hero = () => {
     leftTextAnimate([
       [leftTextScope.current, { opacity: [0, 1] }, { duration: 1, delay: 1 }],
     ]);
-    // leftPointerAnimate([
-    //   [leftPointerScope.current, { opacity: 1 }, { duration: 0.5 }],
-    //   [leftPointerScope.current, { y: 0, x: -100 }, { duration: 0.5 }],
-    //   [
-    //     leftPointerScope.current,
-    //     { x: 0, y: [0, 16, 0] },
-    //     { duration: 1, ease: "easeInOut" },
-    //   ],
-    // ]);
-    // rightImageAnimate([
-    //   [rightImageScope.current, { opacity: 1 }, { duration: 0.5, delay: 1.5 }],
-    //   [rightImageScope.current, { y: 0, x: 0 }, { duration: 0.5 }],
-    // ]);
-    // rightPointerAnimate([
-    //   [
-    //     rightPointerScope.current,
-    //     { opacity: 1 },
-    //     { duration: 0.5, delay: 1.5 },
-    //   ],
-    //   [rightPointerScope.current, { y: 0, x: 175 }, { duration: 0.5 }],
-    //   [
-    //     rightPointerScope.current,
-    //     { x: 0, y: [0, 20, 0] },
-    //     { duration: 0.5, ease: "easeInOut" },
-    //   ],
-    // ]);
   }, []);
 
   const controls = useAnimation();
@@ -52,7 +24,7 @@ const Hero = () => {
     controls.start({
       x: 0,
       y: 0,
-      transition: { type: "spring", stiffness: 50, damping: 25, mass: 1.5 }
+      transition: { type: "spring", stiffness: 50, damping: 25, mass: 1.5 },
     });
     setDraggedAway(false);
   };
@@ -68,7 +40,7 @@ const Hero = () => {
     }
   };
   return (
-    <section id="hero" className="py-8 md:py-16 mb-[1000px]">
+    <section id="hero" className="py-8 md:py-16" data-bg="primary">
       <div className="container text-center">
         <motion.div
           ref={leftImageScope}
@@ -76,8 +48,8 @@ const Hero = () => {
           animate={controls}
           drag
           onDragStart={() => {
-            setDragging(false)
-            setDraggedAway(true)
+            setDragging(false);
+            setDraggedAway(true);
           }}
           className="hidden md:block absolute md:-left-2 lg:-left-4 md:-top-0 lg:-top-0 z-50 w-20 md:w-64 lg:w-80"
         >
@@ -85,7 +57,7 @@ const Hero = () => {
             <motion.p
               ref={leftTextScope}
               initial={{ opacity: 0 }}
-              className="text-[#A9070C] font-bold sm:text-sm md:text-xl lg:text-2xl"
+              className="text-secondary font-bold sm:text-sm md:text-xl lg:text-2xl"
             >
               You can drag me
             </motion.p>
@@ -101,7 +73,7 @@ const Hero = () => {
         {draggedAway && (
           <button
             onClick={resetPosition}
-            className="sparkle-btn absolute top-80 left-20 w-20 px-4 py-2 bg-[#A9070C] text-[#FFECA9] rounded-full opacity-90 z-0 hover:scale-110"
+            className="absolute top-80 left-20 w-24 p-2 bg-secondary text-primary rounded-xl opacity-90 z-0 transition-all duration-500 hover:scale-110"
           >
             Get me back
           </button>
@@ -132,15 +104,17 @@ const Hero = () => {
           <span className="inline-block animate-wave origin-[70%_70%]">
             👋
           </span>{" "}
-          I'm <span className="font-bold text-[#A9070C]">Adnan</span>
+          I&apos;m <span className="font-bold text-secondary">Adnan</span>
         </h1>
         <p className="mt-4 text-4xl md:text-4xl text-[#333]">
-          serving full-stack solutions with a side of AI.
+          Serving full-stack solutions with a side of AI
         </p>
         <p className="mt-4 text-center text-2xl">
-          Cooking up delicious web experiences with spicy React, grilled APIs,
-          and just the right amount of automation sauce. Pull up a chair
-          let&apos;s build something unforgettable.
+          — where every project is cooked to order. I&apos;m all about spicy
+          React front-ends, perfectly grilled APIs, and just the right drizzle
+          of automation sauce. Pull up a chair, place your order, and let&apos;s
+          craft something unforgettable — a digital dish that keeps your users
+          coming back for seconds.
         </p>
       </div>
     </section>

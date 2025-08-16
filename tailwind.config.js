@@ -11,6 +11,11 @@ export default {
       },
     },
     extend: {
+      colors: {
+        primary: "#FFECA9",
+        secondary: "#A9070C",
+        tertiary: "#D87C1E",
+      },
       fontFamily: {
         fredoka: ['"Fredoka One"', "cursive"],
         chewy: ["Chewy", "cursive"],

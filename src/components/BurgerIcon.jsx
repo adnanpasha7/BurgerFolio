@@ -1,13 +1,12 @@
-// components/BurgerIcon.jsx
 import { twMerge } from "tailwind-merge";
 
-export default function BurgerIcon({
+const BurgerIcon = ({
   isOpen,
   onClick,
   className = "",
   size = 24,
   small = false,
-}) {
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,10 +20,9 @@ export default function BurgerIcon({
       strokeLinejoin="round"
       onClick={onClick}
       className={twMerge(
-        "feather feather-menu cursor-pointer transition-all duration-400 ease-in-out",
-        isOpen ? small ? "fixed top-4 right-4 z-[1000] stroke-[#FFECA9]" : "stroke-[#FFECA9]" : "stroke-[#A9070C]",
-        className,
-        small && isOpen && "fixed top-4 right-4 z-[1000]"
+        "feather feather-menu cursor-pointer transition-all duration-500 ease-in-out stroke-tertiary",
+        isOpen && small && "fixed top-4 right-4 z-[1000]",
+        className
       )}
     >
       <line
@@ -61,4 +59,6 @@ export default function BurgerIcon({
       />
     </svg>
   );
-}
+};
+
+export default BurgerIcon;

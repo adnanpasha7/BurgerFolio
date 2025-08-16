@@ -8,17 +8,16 @@ import Hero2 from "./sections/Hero2.jsx";
 import BackToTopButton from "./components/BackToTopButton.jsx";
 import AdnansDinerMenu from "./sections/Abc.jsx";
 import SmallScreenModal from "./components/SmallScreenModal.jsx";
-import ContactPage from "./sections/Contact.jsx";
+import Contact from "./sections/Contact.jsx";
 import Footer from "./sections/Footer.jsx";
+import About from "./sections/About.jsx";
+import Services from "./sections/Services.jsx";
+import Projects from "./sections/Projects.jsx";
 
 const App = () => {
-  window.addEventListener("scroll", () => {
-    return console.log(window.scrollY);
-  });
   return (
     <>
       {/* <SocialFloatingMenu /> */}
-      {/* <AdnansDinerMenu /> */}
       {/* <SmallScreenModal /> */}
       <BackToTopButton />
       <NavBar />
@@ -26,7 +25,10 @@ const App = () => {
       {/* <NavBar2 /> */}
       {/* <Hero2 /> */}
       <Hero />
-      <ContactPage />
+      <About />
+      <Services />
+      <Projects />
+      <Contact />
       <Footer />
     </>
   );
