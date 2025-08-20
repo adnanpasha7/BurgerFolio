@@ -1,11 +1,16 @@
 import { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 import { cgExp } from "../constants";
 import pop2 from "../assets/pop2.mp3";
 
 const About = () => {
   const popAudioRef = useRef(null);
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+
+  const inViewLeft = useInView(leftRef, { amount: 0.4 });
+  const inViewRight = useInView(rightRef, { amount: 0.4 });
 
   const handlePopAudio = (start) => {
     if (start) {
@@ -25,18 +30,18 @@ const About = () => {
       <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-2 gap-10 items-center">
         {/* Left column - About text */}
         <motion.div
+          ref={leftRef}
           initial={{ x: -40, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
+          animate={inViewLeft ? { x: 0, opacity: 1 } : { x: -40, opacity: 0 }}
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-7xl sm:text-6xl font-extrabold -mt-10 text-tertiary">
-            About <span className="text-gray-950">Me</span>
+            Top Bun <span className="text-gray-950">(About Me)</span>
           </h1>
           <div
             className="bg-primary mt-5 p-10 rounded-2xl shadow-lg hover:scale-105 transition-all duration-700"
-            onMouseEnter={() => handlePopAudio(true)}
-            onMouseLeave={() => handlePopAudio(false)}
+            // onMouseEnter={() => handlePopAudio(true)}
+            // onMouseLeave={() => handlePopAudio(false)}
           >
             <p className=" leading-relaxed text-lg text-gray-800">
               Hey there - I&apos;m Adnan, your friendly{" "}
@@ -51,8 +56,8 @@ const About = () => {
           </div>
           <div
             className="bg-primary mt-5 p-10 rounded-2xl shadow-2xl hover:scale-105 transition-all duration-700"
-            onMouseEnter={() => handlePopAudio(true)}
-            onMouseLeave={() => handlePopAudio(false)}
+            // onMouseEnter={() => handlePopAudio(true)}
+            // onMouseLeave={() => handlePopAudio(false)}
           >
             <p className="text-3xl text-tertiary">Off the Menu 🍔</p>
             <p className="mt-2 text-xl text-secondary">
@@ -68,8 +73,8 @@ const About = () => {
 
           <p
             className="w-full mt-5 p-4 rounded-xl bg-primary text-lg text-gray-800 hover:scale-105 transition-all duration-700"
-            onMouseEnter={() => handlePopAudio(true)}
-            onMouseLeave={() => handlePopAudio(false)}
+            // onMouseEnter={() => handlePopAudio(true)}
+            // onMouseLeave={() => handlePopAudio(false)}
           >
             <span className="text-tertiary">Fun Fact:</span> A friend once
             gifted me a road roller toy and told me to "roll on your problems
@@ -80,13 +85,13 @@ const About = () => {
 
         {/* Right column - Experience "menu" */}
         <motion.div
+          ref={rightRef}
           initial={{ x: 40, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
+          animate={inViewRight ? { x: 0, opacity: 1 } : { x: 40, opacity: 0 }}
           transition={{ duration: 0.6 }}
           className="rounded-2xl bg-primary backdrop-blur-md p-6 shadow-xl relative"
-          onMouseEnter={() => handlePopAudio(true)}
-          onMouseLeave={() => handlePopAudio(false)}
+          // onMouseEnter={() => handlePopAudio(true)}
+          // onMouseLeave={() => handlePopAudio(false)}
         >
           <p className="text-3xl tracking-wider text-secondary">
             Experience Menu
