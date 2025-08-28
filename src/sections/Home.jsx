@@ -1,0 +1,27 @@
+// src/pages/Home.jsx
+import BackToTopButton from "../components/BackToTopButton.jsx";
+import NavBar from "../sections/NavBar.jsx";
+import Hero from "../sections/Hero.jsx";
+import About from "../sections/About.jsx";
+import Services from "../sections/Services.jsx";
+import Projects from "../sections/Projects.jsx";
+import Contact from "../sections/Contact.jsx";
+import Footer from "../sections/Footer.jsx";
+import SmallScreenModal from "../components/SmallScreenModal.jsx";
+
+
+export default function Home() {
+  return (
+    <>
+      <BackToTopButton />
+      <SmallScreenModal /> 
+      <NavBar />
+      <Hero />
+      <About />
+      <Services />
+      <Projects />
+      <Contact />
+      <Footer />
+    </>
+  );
+}

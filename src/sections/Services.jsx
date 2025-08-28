@@ -9,7 +9,7 @@ const items = [
   },
   {
     title: "Backend (The Juicy Patty)",
-    desc: "Java, Python, Node.js, REST APIs, RabbitMQ (for those extra crunchy messages).",
+    desc: "Java, Python, Go, PHP, Node.js, REST APIs, RabbitMQ (for those extra crunchy messages).",
   },
   {
     title: "DevOps (The Sauce)",

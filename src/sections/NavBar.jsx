@@ -7,7 +7,6 @@ import grill from "../assets/grill-sound.mp3";
 import pop2 from "../assets/pop2.mp3";
 import openClose from "../assets/openClose.mp3";
 
-import useActiveBackground from "../utils/activeBg.js";
 import { navLinks } from "../constants";
 
 import MenuOverlay from "../sections/MenuOverlay.jsx";
@@ -25,7 +24,6 @@ const NavBar = () => {
   const grillAudioRef = useRef(null);
   const popAudioRef = useRef(null);
   const openAudioRef = useRef(null);
-  const activeBg = useActiveBackground();
 
   useEffect(() => {
     const handleScroll = () => setShowCompactNav(window.scrollY > 372);
@@ -140,7 +138,6 @@ const NavBar = () => {
             handleOpenCloseAudio(true);
           }}
           size={36}
-          bgColor={activeBg}
         />
       </motion.div>
 

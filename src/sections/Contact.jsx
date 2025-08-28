@@ -9,7 +9,7 @@ const socials = [
 
 export default function Contact() {
   return (
-    <section className="py-20 bg-primary overflow-x-clip">
+    <section className="py-20 bg-primary overflow-x-clip" id="contact">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--primary)] text-center">
           Order Up (Contact)

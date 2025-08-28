@@ -28,7 +28,7 @@ export default function Projects() {
               <h3 className="mt-2 text-xl font-bold text-tertiary">{p.name}</h3>
               <p className="mt-2 text-[15px]">{p.blurb}</p>
               <motion.a
-                href="#contact"
+                href="/wip"
                 className="inline-block mt-4 text-sm font-semibold text-secondary"
                 whileHover={{ x: 4 }}
               >
