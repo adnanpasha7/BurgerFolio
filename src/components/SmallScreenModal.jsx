@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import smilingBurger from "../assets/smilingBurger.png";
+import mobile from "../assets/mobile.png";
 import { motion } from "framer-motion";
 
 const SmallScreenModal = () => {
@@ -34,9 +34,9 @@ const SmallScreenModal = () => {
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
       >
         <img
-          src={smilingBurger}
+          src={mobile}
           alt="Burger Icon"
-          className="w-32 h-44 hover:scale-150 transition-transform duration-700"
+          className="w-36 h-40 hover:scale-150 transition-transform duration-700"
         />
       </motion.div>
       <div className="bg-primary rounded-lg p-6 max-w-sm mx-4 text-center shadow-lg">
