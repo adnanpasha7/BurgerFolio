@@ -46,3 +46,22 @@ export const cgExp = [
   "Protected user sessions during no-satellite-link scenarios.",
   "Collaborated with senior engineers, trained interns, and followed SAFe Agile practices.",
 ];
+
+export const skills = [
+  {
+    title: "Frontend (The Cheese & Veggies)",
+    desc: "React, Redux, Tailwind CSS, Next.js, Three.js, React Three Fiber (3D UI magic ✨)",
+  },
+  {
+    title: "Backend (The Juicy Patty)",
+    desc: "Java, Python, Go, PHP, Node.js, REST APIs, RabbitMQ (for those extra crunchy messages).",
+  },
+  {
+    title: "DevOps (The Sauce)",
+    desc: "Docker, CI/CD pipelines, Jenkins, GitLab automation.",
+  },
+  {
+    title: "Other Toppings:",
+    desc: "Manual + automation testing, SAFe Agile practices, peer code reviews.",
+  },
+];

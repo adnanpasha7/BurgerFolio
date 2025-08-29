@@ -1,32 +1,14 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-
-const items = [
-  {
-    title: "Frontend (The Cheese & Veggies)",
-    desc: "React, Redux, Tailwind CSS, Next.js, Three.js, React Three Fiber (3D UI magic ✨)",
-  },
-  {
-    title: "Backend (The Juicy Patty)",
-    desc: "Java, Python, Go, PHP, Node.js, REST APIs, RabbitMQ (for those extra crunchy messages).",
-  },
-  {
-    title: "DevOps (The Sauce)",
-    desc: "Docker, CI/CD pipelines, Jenkins, GitLab automation.",
-  },
-  {
-    title: "Other Toppings:",
-    desc: "Manual + automation testing, SAFe Agile practices, peer code reviews.",
-  },
-];
+import { skills } from "../constants";
 
 const cardVariants = {
   hidden: { rotateY: 90, scale: 0.9, opacity: 0 },
   visible: { rotateY: 0, scale: 1, opacity: 1 },
 };
 
-function ServiceCard({ card, index }) {
+function SkillCard({ card, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { amount: 0.3 });
 
@@ -61,17 +43,17 @@ function ServiceCard({ card, index }) {
   );
 }
 
-export default function Services() {
+export default function Skills() {
   return (
     <section className="py-20 bg-primary overflow-x-clip">
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-7xl sm:text-6xl font-extrabold">
+        <h2 className="text-7xl sm:text-5xl font-extrabold">
           <span className="text-secondary">The Patty</span> (Core Skills)
         </h2>
 
         <div className="mt-10 grid md:grid-cols-3 gap-6">
-          {items.map((card, i) => (
-            <ServiceCard key={card.title} card={card} index={i} />
+          {skills.map((card, i) => (
+            <SkillCard key={card.title} card={card} index={i} />
           ))}
         </div>
       </div>

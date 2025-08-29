@@ -59,18 +59,18 @@ export default function WorkInProgress() {
           <p className="mt-2 text-sm md:text-base text-tertiary">
             This page is on the grill. I&apos;m layering the buns, melting the
             cheese, and adding some AI sauce. Check back soon for a
-            mouth-watering update!
+            mouth watering update!
           </p>
 
           {/* back to home */}
           <motion.div
             className="mt-6"
-            whileHover={{ y: -2 }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
             <Link
               to="/"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-3 font-semibold shadow-md transition-transform bg-secondary text-primary"
+              className="inline-flex items-center gap-2 rounded-full px-5 py-3 shadow-md transition-transform bg-secondary text-primary"
             >
               ← Back to Home
             </Link>
