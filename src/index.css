@@ -8,6 +8,7 @@
 @layer base {
   body {
     @apply bg-primary font-chewy overflow-x-clip;
+    cursor: url("/burger.cur") 16 16, auto;
   }
   html {
   scroll-behavior: smooth;

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Pointer from "../components/Pointer.jsx";
 import sittingOnBurger from "../assets/sittingOnBurger.webp";
 import { motion, useAnimate, useAnimation } from "framer-motion";
 
@@ -78,27 +77,6 @@ const Hero = () => {
             Get me back
           </button>
         )}
-        {/* <motion.div
-          ref={leftPointerScope}
-          initial={{ opacity: 0, y: 100, x: -200 }}
-          className="absolute left-56 top-96 hidden lg:block"
-        >
-          <Pointer name="Adnan" color="red" />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 100, x: 100 }}
-          ref={rightImageScope}
-          className="absolute -right-48 -top-16 hidden lg:block"
-        >
-          <img src={sittingOnBurger} alt="Sitting on Burger" />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 275, x: 100 }}
-          ref={rightPointerScope}
-          className="absolute right-40 top-10 hidden lg:block"
-        >
-          <Pointer name="Pasha" color="brown" />
-        </motion.div> */}
         <h1 className="mt-4 text-5xl py-1 px-8 md:text-6xl text-[#222]">
           Hey
           <span className="inline-block animate-wave origin-[70%_70%]">

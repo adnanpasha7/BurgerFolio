@@ -1,4 +1,3 @@
-// src/pages/Home.jsx
 import BackToTopButton from "../components/BackToTopButton.jsx";
 import NavBar from "../sections/NavBar.jsx";
 import Hero from "../sections/Hero.jsx";
