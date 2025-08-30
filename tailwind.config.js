@@ -43,9 +43,6 @@ export default {
       animation: {
         wave: "wave 2s infinite",
       },
-      cursor: {
-        burger: "url('/burger.cur') 16 16, auto", // 👈 custom burger cursor
-      },
     },
   },
   plugins: [],

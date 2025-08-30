@@ -2,36 +2,15 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import emailjs from "emailjs-com";
-import {
-  faInstagram,
-  faLinkedin,
-  faXTwitter,
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faEnvelope,
-  faArrowUpRightFromSquare,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 import sendingImg from "../assets/sending.png";
 import sentImg from "../assets/sent.png";
 import failedImg from "../assets/failed.png";
+import { socialLinks } from "../constants";
 
-const socials = [
-  { label: "Email", href: "mailto:adnanbasha786@gmail.com", icon: faEnvelope },
-  {
-    label: "Instagram",
-    href: "https://instagram.com/humblekidpasha",
-    icon: faInstagram,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/adnanpasha7/",
-    icon: faLinkedin,
-  },
-  { label: "X (Twitter)", href: "https://x.com/adnanpasha_", icon: faXTwitter },
-  { label: "Phone", href: "tel:+919108811142", icon: faPhone },
-];
+import pop2 from "../assets/pop2.mp3";
+import ding from "../assets/ding.mp3";
 
 const fadeUp = {
   initial: { y: 16, opacity: 0 },
@@ -44,6 +23,7 @@ const fadeUp = {
 
 export default function Contact() {
   const formRef = useRef();
+  const popAudioRef = useRef();
   const [status, setStatus] = useState("");
 
   const sendEmail = (e) => {
@@ -62,6 +42,7 @@ export default function Contact() {
           console.log(result.text);
           setTimeout(() => {
             setStatus("sent");
+            playDing();
             formRef.current.reset();
             setTimeout(() => setStatus(""), 5000);
           }, 5000);
@@ -72,12 +53,26 @@ export default function Contact() {
         }
       );
   };
+
+  const handlePopHover = (start) => {
+    if (popAudioRef.current) {
+      popAudioRef.current.currentTime = 0;
+      start ? popAudioRef.current.play() : popAudioRef.current.pause();
+    }
+  };
+
+  const playDing = () => {
+    const audio = new Audio(ding);
+    audio.volume = 0.5; // adjust volume
+    audio.play().catch(() => {}); // prevent errors if autoplay is blocked
+  };
   return (
     <section
       id="contact"
       className="relative py-24 overflow-x-clip
                  bg-gradient-to-b from-primary via-primary/95 to-primary"
     >
+      <audio ref={popAudioRef} src={pop2} preload="auto" />
       <div className="mx-auto max-w-6xl px-4">
         <h1 className="font-extrabold text-tertiary drop-shadow text-7xl sm:text-5xl">
           Order Up <span className="text-secondary">(Contact)</span>
@@ -94,7 +89,7 @@ export default function Contact() {
                        p-6 md:p-7 shadow-[0_10px_30px_rgba(0,0,0,.15)]"
           >
             <ul className="mt-5 space-y-3.5">
-              {socials.map((s, i) => (
+              {socialLinks.map((s, i) => (
                 <motion.li
                   key={s.href}
                   variants={fadeUp}
@@ -111,6 +106,8 @@ export default function Contact() {
                    bg-primary px-4 py-3 transition
                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
                    focus-visible:ring-white/60 focus-visible:ring-offset-primary overflow-hidden"
+                    onMouseEnter={() => handlePopHover(true)}
+                    onMouseLeave={() => handlePopHover(false)}
                   >
                     <span className="flex items-center gap-3">
                       <span className="grid place-items-center size-9 rounded-lg bg-tertiary group-hover:scale-110 transition-all duration-700">

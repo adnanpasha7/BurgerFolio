@@ -6,7 +6,7 @@ import {
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 export const socialLinks = [
-  { icon: faPhone, href: "tel:+919108811142", label: "Call" },
+  { icon: faPhone, href: "tel:+919108811142", label: "Phone" },
   {
     icon: faEnvelope,
     href: "mailto:adnanbasha786@gmail.com",
