@@ -9,8 +9,8 @@ import sentImg from "../assets/sent.png";
 import failedImg from "../assets/failed.png";
 import { socialLinks } from "../constants";
 
-import pop2 from "../assets/pop2.mp3";
-import ding from "../assets/ding.mp3";
+import pop2 from "../assets/audio/pop2.mp3";
+import ding from "../assets/audio/ding.mp3";
 
 const fadeUp = {
   initial: { y: 16, opacity: 0 },

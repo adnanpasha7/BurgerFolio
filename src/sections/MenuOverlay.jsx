@@ -3,7 +3,7 @@ import gsap from "gsap";
 
 import { navLinks } from "../constants";
 
-import pop2 from "../assets/pop2.mp3";
+import pop2 from "../assets/audio/pop2.mp3";
 
 const MenuOverlay = ({ isOpen, onClose }) => {
   const menuOverlayRef = useRef(null);

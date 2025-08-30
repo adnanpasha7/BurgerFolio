@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 import BurgerTop from "../assets/BT.webp";
 import BurgerBottom from "../assets/BB.webp";
-import grill from "../assets/grill-sound.mp3";
-import pop2 from "../assets/pop2.mp3";
-import openClose from "../assets/openClose.mp3";
+import grill from "../assets/audio/grill-sound.mp3";
+import pop2 from "../assets/audio/pop2.mp3";
+import openClose from "../assets/audio/openClose.mp3";
 
 import { navLinks } from "../constants";
 
