@@ -30,9 +30,9 @@ export const socialLinks = [
 ];
 
 export const navLinks = [
-  { name: "Menu", href: "/menu" },
   { name: "About", href: "#about" },
-  { name: "Blog", href: "#blog" },
+  { name: "Projects", href: "#projects" },
+  { name: "Blog", href: "/wip" },
   { name: "Contact", href: "#contact" },
 ];
 

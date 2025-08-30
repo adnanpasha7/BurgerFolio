@@ -1,6 +1,6 @@
-// Loader.tsx
 import { motion } from "framer-motion";
 import Burger from "../assets/Burger.png";
+import loading from "../assets/loading.png";
 
 const bounceVariant = {
   animate: {
@@ -17,9 +17,9 @@ const bounceVariant = {
 
 const Loader = () => {
   return (
-    <div className="fixed inset-0 bg-[#FAEFD2] flex justify-center items-center z-50">
+    <div className="fixed inset-0 bg-primary flex justify-center items-center z-50">
       <motion.img
-        src={Burger}
+        src={loading}
         alt="Loading Bun"
         className="w-40 h-40"
         variants={bounceVariant}
