@@ -28,16 +28,6 @@ const Hero = () => {
     setDraggedAway(false);
   };
 
-  // When drag ends, check position to decide if image moved away or not
-  const onDragEnd = (_, info) => {
-    // Check if image is near origin (tolerance 10px)
-    if (Math.abs(info.point.x) < 10 && Math.abs(info.point.y) < 10) {
-      setDraggedAway(false);
-      controls.start({ x: 0, y: 0 });
-    } else {
-      setDraggedAway(true);
-    }
-  };
   return (
     <section id="hero" className="py-8 md:py-16" data-bg="primary">
       <div className="container text-center">
@@ -50,7 +40,7 @@ const Hero = () => {
             setDragging(false);
             setDraggedAway(true);
           }}
-          className="hidden md:block absolute md:-left-2 lg:-left-4 md:-top-0 lg:-top-0 z-50 w-20 md:w-64 lg:w-80"
+          className="block absolute -left-3 md:-left-2 lg:-left-4 top-64 md:-top-0 lg:-top-0 z-50 w-40 md:w-64 lg:w-80"
         >
           {dragging && (
             <motion.p
@@ -72,7 +62,7 @@ const Hero = () => {
         {draggedAway && (
           <button
             onClick={resetPosition}
-            className="absolute top-80 left-20 w-24 p-2 bg-secondary text-primary rounded-xl opacity-90 z-0 transition-all duration-500 hover:scale-110"
+            className="absolute top-96 md:top-80 left-5 md:left-20 w-20 md:w-24 p-2 text-[10px] md:text-lg bg-secondary text-primary rounded-xl opacity-90 z-0 transition-all duration-500 hover:scale-110"
           >
             Get me back
           </button>
