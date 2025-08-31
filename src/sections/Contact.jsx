@@ -221,7 +221,7 @@ export default function Contact() {
                   <motion.img
                     src={sendingImg}
                     alt="Sending..."
-                    className="w-24 h-24"
+                    className="w-20 h-20 md:w-24 md:h-24"
                     animate={{ y: [0, -10, 0] }}
                     transition={{ repeat: Infinity, duration: 1 }} // quicker bounce
                   />
@@ -238,7 +238,7 @@ export default function Contact() {
                   transition={{ duration: 0.3, ease: "easeOut" }}
                   className="mt-3 flex justify-center"
                 >
-                  <motion.img src={sentImg} alt="Sent!" className="w-24 h-24" />
+                  <motion.img src={sentImg} alt="Sent!" className="w-20 h-20 md:w-24 md:h-24" />
                 </motion.div>
               )}
 
@@ -255,7 +255,7 @@ export default function Contact() {
                   <motion.img
                     src={failedImg}
                     alt="Failed!"
-                    className="w-24 h-24"
+                    className="w-20 h-20 md:w-24 md:h-24"
                   />
                 </motion.div>
               )}
