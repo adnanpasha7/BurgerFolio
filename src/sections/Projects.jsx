@@ -58,7 +58,7 @@ export default function Projects() {
         </div>
         <div className="flex justify-center mt-10">
           <Link
-            to="/wip"
+            to="/projects"
             className="p-3 bg-secondary rounded-xl text-primary shadow-md hover:scale-105 transition-transform"
           >
             View All

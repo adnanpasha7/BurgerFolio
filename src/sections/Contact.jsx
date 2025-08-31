@@ -8,6 +8,7 @@ import sendingImg from "../assets/sending.png";
 import sentImg from "../assets/sent.png";
 import failedImg from "../assets/failed.png";
 import { socialLinks } from "../constants";
+import InputField from "../components/InputField";
 
 import pop2 from "../assets/audio/pop2.mp3";
 import ding from "../assets/audio/ding.mp3";
@@ -45,11 +46,15 @@ export default function Contact() {
             playDing();
             formRef.current.reset();
             setTimeout(() => setStatus(""), 5000);
-          }, 5000);
+          }, 3000);
         },
         (error) => {
           console.error(error.text);
           setStatus("failed");
+          setTimeout(() => {
+            setStatus("");
+            formRef.current.reset();
+          }, 5000);
         }
       );
   };
@@ -159,116 +164,99 @@ export default function Contact() {
             className="rounded-2xl border border-white/10 bg-tertiary backdrop-blur
                        p-6 md:p-7 shadow-[0_10px_30px_rgba(0,0,0,.15)]"
           >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="block">
-                <span className="text-lg text-secondary">Name</span>
-                <input
-                  name="from_name"
-                  required
-                  placeholder="Your name"
-                  className="mt-1 w-full rounded-lg bg-primary
-                             px-3 py-2 text-secondary placeholder:opacity-60 placeholder:text-tertiary
-                             focus:outline-none focus:ring-2 focus:ring-secondary"
-                />
-              </label>
-
-              <label className="block">
-                <span className="text-lg text-secondary">Email</span>
-                <input
-                  type="email"
-                  name="reply_to"
-                  required
-                  placeholder="you@example.com"
-                  className="mt-1 w-full rounded-lg bg-primary
-                             px-3 py-2 text-secondary placeholder:opacity-60 placeholder:text-tertiary
-                             focus:outline-none focus:ring-2 focus:ring-secondary"
-                />
-              </label>
+            <div className="grid md:grid-cols-2 gap-4">
+              <InputField
+                label="Name"
+                name="from_name"
+                placeholder="Your name"
+                required
+              />
+              <InputField
+                label="Email"
+                type="email"
+                name="reply_to"
+                placeholder="you@example.com"
+                required
+              />
             </div>
 
-            <label className="block mt-4">
-              <span className="text-lg text-secondary">Message</span>
-              <textarea
-                rows={4}
-                name="message"
-                required
-                placeholder="What's cooking?"
-                className="mt-1 w-full rounded-lg bg-primary
-                           px-3 py-2 text-secondary placeholder:opacity-60 placeholder:text-tertiary
-                           focus:outline-none focus:ring-2 focus:ring-secondary"
-              />
-            </label>
-
-            <button
-              type="submit"
-              className="mt-12 mx-auto flex items-center gap-2 rounded-xl
-             bg-secondary text-primary font-semibold
-             px-5 py-3 shadow hover:shadow-lg hover:scale-110 transition duration-500"
-            >
-              {status === "" ? (
-                <>
-                  Place Order <span aria-hidden>🍽️</span>
-                </>
-              ) : (
-                <motion.div
-                  className="flex gap-1"
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{ repeat: Infinity, duration: 0.6 }}
-                >
-                  <span>●</span>
-                  <span>●</span>
-                  <span>●</span>
-                </motion.div>
-              )}
-            </button>
+            <InputField
+              label="Message"
+              name="message"
+              placeholder="What's cooking?"
+              required
+              textarea
+              rows={4}
+            />
             <AnimatePresence mode="wait">
-              {!status && <div className="h-24 mt-6" />}
-              {status && (
-                <motion.div
-                  key={status}
+              {/* Default Button */}
+              {status === "" && (
+                <motion.button
+                  key="button"
+                  type="submit"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.6, ease: "easeInOut" }}
-                  className="mt-6 flex justify-center"
+                  transition={{ duration: 0.3, ease: "easeOut" }} // faster fade
+                  className="mt-12 mx-auto flex items-center gap-2 rounded-xl
+                 bg-secondary text-primary text-xl
+                 px-5 py-3 shadow hover:shadow-lg 
+                 transition-transform duration-700 hover:scale-110 
+                 transform-gpu will-change-transform"
                 >
-                  {status === "sending" && (
-                    <motion.img
-                      src={sendingImg}
-                      alt="Sending..."
-                      className="w-24 h-24"
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.2 }}
-                    />
-                  )}
-                  {status === "sent" && (
-                    <motion.img
-                      src={sentImg}
-                      alt="Sent!"
-                      className="w-24 h-24"
-                      initial={{ scale: 0.8 }}
-                      animate={{ scale: 1.1 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 10,
-                      }}
-                    />
-                  )}
-                  {status === "failed" && (
-                    <motion.img
-                      src={failedImg}
-                      alt="Failed!"
-                      className="w-24 h-24"
-                      initial={{ scale: 0.8 }}
-                      animate={{ scale: 1.1 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 10,
-                      }}
-                    />
-                  )}
+                  Place Order <span aria-hidden>🍔</span>
+                </motion.button>
+              )}
+
+              {/* Sending */}
+              {status === "sending" && (
+                <motion.div
+                  key="sending"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="mt-3 flex justify-center"
+                >
+                  <motion.img
+                    src={sendingImg}
+                    alt="Sending..."
+                    className="w-24 h-24"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ repeat: Infinity, duration: 1 }} // quicker bounce
+                  />
+                </motion.div>
+              )}
+
+              {/* Sent */}
+              {status === "sent" && (
+                <motion.div
+                  key="sent"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: [1, 1.1, 1] }} // pop effect
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="mt-3 flex justify-center"
+                >
+                  <motion.img src={sentImg} alt="Sent!" className="w-24 h-24" />
+                </motion.div>
+              )}
+
+              {/* Failed */}
+              {status === "failed" && (
+                <motion.div
+                  key="failed"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: [1, 1.05, 1] }} // subtle pop
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  className="mt-3 flex justify-center"
+                >
+                  <motion.img
+                    src={failedImg}
+                    alt="Failed!"
+                    className="w-24 h-24"
+                  />
                 </motion.div>
               )}
             </AnimatePresence>

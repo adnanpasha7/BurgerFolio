@@ -65,3 +65,30 @@ export const skills = [
     desc: "Manual + automation testing, SAFe Agile practices, peer code reviews.",
   },
 ];
+
+export const projectsData = [
+  {
+    id: 1,
+    title: "Branditars",
+    tech: "React • Tailwind • Framer Motion • GSAP",
+    description: "Website for Dubai's Marketing agency",
+    image: "/placeholder1.png",
+    link: "/wip",
+  },
+  {
+    id: 2,
+    title: "KitchenOps Dashboard",
+    tech: "React • Node",
+    description: "Real-time ops & analytics",
+    image: "/placeholder2.png",
+    link: "/wip",
+  },
+  {
+    id: 3,
+    title: "Delivery Flow",
+    tech: "Next.js • Stripe",
+    description: "Checkout + subscriptions",
+    image: "/placeholder3.png",
+    link: "/wip",
+  },
+];

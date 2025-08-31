@@ -62,7 +62,7 @@ const Hero = () => {
         {draggedAway && (
           <button
             onClick={resetPosition}
-            className="absolute top-96 md:top-80 left-5 md:left-20 w-20 md:w-24 p-2 text-[10px] md:text-lg bg-secondary text-primary rounded-xl opacity-90 z-0 transition-all duration-500 hover:scale-110"
+            className="absolute top-96 md:top-80 left-5 md:left-20 w-20 md:w-24 p-2 text-[10px] md:text-lg bg-secondary text-primary rounded-xl opacity-90 z-0 transition-all duration-500 hover:scale-110 transform-gpu will-change-transform"
           >
             Get me back
           </button>

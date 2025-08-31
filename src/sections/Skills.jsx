@@ -45,7 +45,7 @@ function SkillCard({ card, index }) {
 
 export default function Skills() {
   return (
-    <section className="py-20 bg-primary overflow-x-clip">
+    <section className="py-20 overflow-x-clip bg-inherit">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="text-7xl sm:text-5xl font-extrabold">
           <span className="text-secondary">The Patty</span> (Core Skills)

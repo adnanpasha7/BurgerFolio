@@ -7,7 +7,7 @@
 
 @layer base {
   body {
-    @apply bg-primary font-chewy overflow-x-clip;
+    @apply bg-[radial-gradient(circle_at_center,_#FFECA9,_#f0ce56)] font-chewy overflow-x-clip;
   }
   html {
   scroll-behavior: smooth;
