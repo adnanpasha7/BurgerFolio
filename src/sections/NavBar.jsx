@@ -89,7 +89,7 @@ const NavBar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-secondary font-medium px-3 py-2 wavy-underline-hover hover:scale-125"
+              className="text-secondary font-medium px-3 py-2 wavy-underline-hover hover:scale-125 transition-all duration-500 transform-gpu will-change-transform"
               onMouseEnter={() => handlePopHover(true)}
               onMouseLeave={() => handlePopHover(false)}
             >
