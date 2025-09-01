@@ -5,6 +5,7 @@ import Loader from "./components/Loader.jsx";
 import WorkInProgress from "./sections/WorkInProgress.jsx";
 import NotFound from "./sections/NotFound.jsx";
 import ViewAllProjects from "./sections/ProjectViewAll.jsx";
+import Experience from "./sections/Experience.jsx";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -24,6 +25,7 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/wip" element={<WorkInProgress />} />
       <Route path="/projects" element={<ViewAllProjects />} />
+      <Route path="/work/experience" element={<Experience />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

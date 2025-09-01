@@ -36,15 +36,22 @@ export const navLinks = [
   { name: "Contact", href: "#contact" },
 ];
 
-export const cgExp = [
-  "Enhanced in-flight entertainment & connectivity apps for airlines ✈️ (React UI, REST APIs).",
-  "Developed OTA (Over-the-Air) installation features - allowing airline engineers to monitor LSP package installs.",
-  "Worked on RabbitMQ messaging (OTA updates, AHAI messages).",
-  "Managed software releases end-to-end, including peer reviews, testing, and QE support.",
-  "Debugged Legacy (LAOS) bugs and fixed issues from logs, servers, and maintenance reports.",
-  "Implemented CI/CD pipelines and automation scripts.",
-  "Protected user sessions during no-satellite-link scenarios.",
-  "Collaborated with senior engineers, trained interns, and followed SAFe Agile practices.",
+export const experiences = [
+  {
+    company: "Capgemini Engineering",
+    role: "Full Stack Developer",
+    duration: "Jun 2021 – Present",
+    points: [
+      "Enhanced in-flight entertainment & connectivity (IFEC) applications ✈️ using React, Node.js, and REST APIs, enabling passenger internet access through Intelsat’s satellite broadband network.",
+      "Built backend APIs with resilience features to maintain session continuity during satellite link dropouts, ensuring uninterrupted connectivity for passengers and crew.",
+      "Developed OTA (Over-the-Air) installation workflows by integrating satellite-based package distribution with real-time monitoring on the Maintenance portal, reducing installation errors by 25%.",
+      "Implemented RabbitMQ-based messaging for reliable delivery of OTA updates and satellite communication events across distributed aircraft and ground systems.",
+      "Analyzed satellite communication logs and telemetry data to troubleshoot link issues, improving reliability and reducing downtime.",
+      "Containerized applications with Docker and implemented CI/CD pipelines in GitLab, accelerating release cycles for mission-critical satellite connectivity systems.",
+      "Worked on protecting user sessions in no-satellite-link scenarios to ensure service continuity.",
+      "Collaborated with global Intelsat teams, mentored interns, and followed SAFe Agile practices to deliver software aligned with satellite network capabilities."
+    ]
+  },
 ];
 
 export const skills = [
