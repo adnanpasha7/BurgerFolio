@@ -85,17 +85,22 @@ const NavBar = () => {
         </div>
 
         <nav className="hidden md:flex gap-4">
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className="text-secondary font-medium px-3 py-2 wavy-underline-hover hover:scale-125 transition-all duration-500 transform-gpu will-change-transform"
-              onMouseEnter={() => handlePopHover(true)}
-              onMouseLeave={() => handlePopHover(false)}
-            >
-              {link.name}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            if (link.name === "Random") {
+              return null;
+            }
+            return (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-secondary font-medium px-3 py-2 wavy-underline-hover hover:scale-125 transition-all duration-500 transform-gpu will-change-transform"
+                onMouseEnter={() => handlePopHover(true)}
+                onMouseLeave={() => handlePopHover(false)}
+              >
+                {link.name}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Mobile Burger */}
@@ -144,6 +149,6 @@ const NavBar = () => {
       <MenuOverlay isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </section>
   );
-}
+};
 
 export default NavBar;

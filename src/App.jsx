@@ -6,6 +6,7 @@ import WorkInProgress from "./sections/WorkInProgress.jsx";
 import NotFound from "./sections/NotFound.jsx";
 import ViewAllProjects from "./sections/ProjectViewAll.jsx";
 import Experience from "./sections/Experience.jsx";
+import Random from "./sections/random/Random.jsx";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,7 @@ export default function App() {
       <Route path="/wip" element={<WorkInProgress />} />
       <Route path="/projects" element={<ViewAllProjects />} />
       <Route path="/work/experience" element={<Experience />} />
+      <Route path="/random" element={<Random />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

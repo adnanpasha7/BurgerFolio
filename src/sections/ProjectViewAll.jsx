@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { projectsData } from "../constants";
+import GoBackButton from "../components/BackButton";
 
 // Container for staggered animation
 const containerVariants = {
@@ -22,15 +23,8 @@ const projectVariants = {
 
 const ViewAllProjects = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-secondary via-tertiary to-secondary py-16 relative">
-      {/* Floating Back to Home Button */}
-      <Link
-        to="/"
-        className="fixed top-6 left-6 flex items-center border-4 border-tertiary gap-2 px-4 py-3 bg-primary text-secondary rounded-full shadow-2xl hover:scale-110 transition-transform duration-500 z-50 transform-gpu will-change-transform"
-      >
-        <ArrowLeft size={20} />
-        <span>Home</span>
-      </Link>
+    <section className="bg-gradient-to-b from-secondary via-tertiary to-secondary py-16 relative">
+      <GoBackButton />
 
       <div className="container mx-auto">
         {/* Page Title */}
@@ -49,7 +43,7 @@ const ViewAllProjects = () => {
           {projectsData.map((project) => (
             <motion.div
               key={project.id}
-              className="w-full md:w-4/5 lg:w-3/4 min-h-[80vh] flex flex-col md:flex-row items-center justify-center text-center md:text-left rounded-3xl shadow-xl p-10 bg-primary"
+              className="w-full md:w-4/5 lg:w-3/4 h-[80vh]flex flex-col md:flex-row items-center justify-center text-center md:text-left rounded-3xl shadow-xl p-10 bg-primary"
               variants={projectVariants}
             >
               {/* Image */}

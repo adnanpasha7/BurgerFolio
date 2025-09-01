@@ -4,19 +4,14 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 import { experiences } from "../constants";
+import GoBackButton from "../components/BackButton";
 
 const Experience = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section className="py-20 min-h-screen">
-      <Link
-        to="/"
-        className="fixed top-6 left-6 flex items-center gap-2 px-4 py-3 bg-secondary backdrop-blur-xl text-primary rounded-full shadow-2xl hover:scale-110 transition-transform duration-500 z-50 transform-gpu will-change-transform"
-      >
-        <ArrowLeft size={20} />
-        <span>Home</span>
-      </Link>
+      <GoBackButton />
       <div className="mx-auto max-w-5xl px-6">
         <h1 className="text-5xl md:text-7xl font-extrabold text-secondary/100 mb-10 text-center">
           Full Experience 🍔
