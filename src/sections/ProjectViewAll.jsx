@@ -25,13 +25,11 @@ const ViewAllProjects = () => {
   return (
     <section className="bg-gradient-to-b from-secondary via-tertiary to-secondary py-16 relative">
       <GoBackButton />
-
       <div className="container mx-auto">
         {/* Page Title */}
         <h1 className="text-5xl md:text-7xl font-bold text-center text-black mb-12">
-            All <span className="text-tertiary">Projects</span>
+          All <span className="text-tertiary">Projects</span>
         </h1>
-
         {/* Project Cards */}
         <motion.div
           className="flex flex-col items-center space-y-24"
@@ -43,32 +41,32 @@ const ViewAllProjects = () => {
           {projectsData.map((project) => (
             <motion.div
               key={project.id}
-              className="w-full md:w-4/5 lg:w-3/4 h-[80vh]flex flex-col md:flex-row items-center justify-center text-center md:text-left rounded-3xl shadow-xl p-10 bg-primary"
+              className="w-auto md:w-4/5 lg:w-3/4 flex flex-col rounded-3xl shadow-xl bg-primary overflow-hidden"
               variants={projectVariants}
             >
-              {/* Image */}
-              <div className="w-full md:w-1/2 flex justify-center mb-6 md:mb-0">
-                <div className="w-48 h-48 md:w-64 md:h-64 bg-gray-300 rounded-lg flex items-center justify-center">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="object-cover w- h-full rounded-lg"
-                  />
-                </div>
+              {/* Large Image */}
+              <div className="p-2 w-auto h-80 md:h-96 lg:h-[28rem] m-10">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="object-cover w-auto h-full rounded-lg"
+                />
               </div>
 
-              {/* Details */}
-              <div className="w-full md:w-1/2 px-6">
+              {/* Content at Bottom */}
+              <div className="p-10 text-center border-4 border-secondary mx-10 mb-4 rounded-lg">
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl md:text-4xl text-secondary mb-2 inline-block transition-transform duration-700 hover:scale-110 transform-gpu will-change-transform"
+                  className="text-xl md:text-4xl text-primary bg-secondary p-2 rounded-xl mb-3 inline-block transition-transform duration-700 hover:scale-110 transform-gpu will-change-transform"
                 >
                   {project.title}
                 </a>
-                <p className="text-tertiary mb-2">{project.tech}</p>
-                <p className="text-black mb-4">{project.description}</p>
+                <p className="text-tertiary mb-3 text-lg">{project.tech}</p>
+                <p className="text-black text-base md:text-lg">
+                  {project.description}
+                </p>
               </div>
             </motion.div>
           ))}

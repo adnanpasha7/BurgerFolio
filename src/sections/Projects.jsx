@@ -6,7 +6,7 @@ const projects = [
     name: "Branditars",
     tag: "React • Tailwind • Framer motion • GSAP",
     blurb: "Website for Dubai's Marketing agency",
-    href: "/wip",
+    href: "https://branditars.ae",
   },
   {
     name: "KitchenOps Dashboard",

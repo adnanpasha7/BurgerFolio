@@ -4,6 +4,7 @@ import {
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import bia from "../assets/projects/bia.png";
 
 export const socialLinks = [
   { icon: faPhone, href: "tel:+919108811142", label: "Phone" },
@@ -78,10 +79,10 @@ export const projectsData = [
   {
     id: 1,
     title: "Branditars",
-    tech: "React • Tailwind • Framer Motion • GSAP",
+    tech: "React • Tailwind • Framer Motion • GSAP • CloudFlare for assests",
     description: "Website for Dubai's Marketing agency",
-    image: "/placeholder1.png",
-    link: "/wip",
+    image: bia,
+    link: "https://branditars.ae",
   },
   {
     id: 2,
