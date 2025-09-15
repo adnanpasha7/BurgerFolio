@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import smilingBurger from "../assets/smilingBurger.png";
-import { socialLinks } from "../constants";
-import pop2 from "../assets/audio/pop2.mp3";
+import smilingBurger from "../../assets/smilingBurger.png";
+import { socialLinks } from "../../constants";
+import pop2 from "../../assets/audio/pop2.mp3";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

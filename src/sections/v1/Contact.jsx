@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import emailjs from "emailjs-com";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
-import sendingImg from "../assets/sending.png";
-import sentImg from "../assets/sent.png";
-import failedImg from "../assets/failed.png";
-import { socialLinks } from "../constants";
-import InputField from "../components/InputField";
+import sendingImg from "../../assets/sending.png";
+import sentImg from "../../assets/sent.png";
+import failedImg from "../../assets/failed.png";
+import { socialLinks } from "../../constants";
+import InputField from "../../components/InputField";
 
-import pop2 from "../assets/audio/pop2.mp3";
-import ding from "../assets/audio/ding.mp3";
+import pop2 from "../../assets/audio/pop2.mp3";
+import ding from "../../assets/audio/ding.mp3";
 
 const fadeUp = {
   initial: { y: 16, opacity: 0 },

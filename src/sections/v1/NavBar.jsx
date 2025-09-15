@@ -1,21 +1,21 @@
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
-import BurgerTop from "../assets/BT.webp";
-import BurgerBottom from "../assets/BB.webp";
-import grill from "../assets/audio/grill-sound.mp3";
-import pop2 from "../assets/audio/pop2.mp3";
-import openClose from "../assets/audio/openClose.mp3";
+import BurgerTop from "../../assets/BT.webp";
+import BurgerBottom from "../../assets/BB.webp";
+import grill from "../../assets/audio/grill-sound.mp3";
+import pop2 from "../../assets/audio/pop2.mp3";
+import openClose from "../../assets/audio/openClose.mp3";
 
-import { navLinks } from "../constants";
+import { navLinks } from "../../constants/index.js";
 
-import MenuOverlay from "../sections/MenuOverlay.jsx";
-import BurgerIcon from "../components/BurgerIcon.jsx";
+import MenuOverlay from "../MenuOverlay.jsx";
+import BurgerIcon from "../../components/BurgerIcon.jsx";
 import {
   swayVariant,
   bottomBunVariant,
   stampVariant,
-} from "../utils/animations.js";
+} from "../../utils/animations.js";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);

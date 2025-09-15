@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Home from "./sections/Home.jsx";
+import HomeV1 from "./pages/HomeV1.jsx";
+import HomeV2 from "./pages/HomeV2.jsx";
 import Loader from "./components/Loader.jsx";
 import WorkInProgress from "./sections/WorkInProgress.jsx";
 import NotFound from "./sections/NotFound.jsx";
 import ViewAllProjects from "./sections/ProjectViewAll.jsx";
 import Experience from "./sections/Experience.jsx";
 import Random from "./sections/random/Random.jsx";
+import VersionSelector from "./pages/VersionSelector.jsx";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -23,7 +25,9 @@ export default function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<VersionSelector />} />
+      <Route path="/v1" element={<HomeV1 />} />
+      <Route path="/v2" element={<HomeV2 />} />
       <Route path="/wip" element={<WorkInProgress />} />
       <Route path="/projects" element={<ViewAllProjects />} />
       <Route path="/work/experience" element={<Experience />} />

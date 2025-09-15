@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import sittingOnBurger from "../assets/sittingOnBurger.webp";
+import sittingOnBurger from "../../assets/sittingOnBurger.webp";
 import { motion, useAnimate, useAnimation } from "framer-motion";
 
 const Hero = () => {

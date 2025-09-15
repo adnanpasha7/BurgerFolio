@@ -22,6 +22,8 @@ export default {
         bangers: ["Bangers", "cursive"],
         inter: ["Inter", "sans-serif"],
         caveat: ["Caveat", "cursive"],
+        serif: ["Playfair Display", "serif"],
+        sans: ["Inter", "sans-serif"],
       },
       screens: {
         sm: "375px",

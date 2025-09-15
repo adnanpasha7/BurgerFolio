@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 
-import { experiences } from "../constants";
+import { experiences } from "../../constants";
 
 const About = () => {
   const leftRef = useRef(null);

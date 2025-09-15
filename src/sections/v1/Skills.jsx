@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { skills } from "../constants";
+import { skills } from "../../constants";
 
 const cardVariants = {
   hidden: { rotateY: 90, scale: 0.9, opacity: 0 },
