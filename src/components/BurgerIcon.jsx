@@ -20,7 +20,7 @@ const BurgerIcon = ({
       strokeLinejoin="round"
       onClick={onClick}
       className={twMerge(
-        "feather feather-menu cursor-pointer transition-all duration-500 ease-in-out stroke-tertiary",
+        "feather feather-menu cursor-pointer transition-all duration-500 ease-in-out stroke-black",
         isOpen && small && "fixed top-4 right-4 z-[1000]",
         className
       )}
