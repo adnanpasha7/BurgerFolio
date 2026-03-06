@@ -28,7 +28,7 @@ const Footer = () => {
         <img
           src={smilingBurger}
           alt="Burger Icon"
-          className="w-24 h-32 hover:scale-150 transition-transform duration-700"
+          className="w-24 h-32 hover:scale-110 transition-transform duration-700"
         />
       </motion.div>
 
